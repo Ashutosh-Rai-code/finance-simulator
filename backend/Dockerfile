@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Set CARGO_HOME to a writable directory
+ENV CARGO_HOME=/tmp/cargo
+RUN mkdir -p /tmp/cargo && chmod 777 /tmp/cargo
+
 # Copy requirements
 COPY requirements.txt .
 
