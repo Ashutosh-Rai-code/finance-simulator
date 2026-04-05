@@ -18,15 +18,29 @@ app = FastAPI(
     version="2.0.0"
 )
 
-# Configure CORS for React frontend
+# Configure CORS for React frontend - allow both HTTP and HTTPS
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000").strip()
+
 origins = [
     "http://localhost:3000",
     "http://localhost:3001",
     "http://localhost:8000",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:3001",
-    os.getenv("FRONTEND_URL", "http://localhost:3000")
+    frontend_url,
 ]
+
+# If frontend_url is HTTP, also add HTTPS version for production
+if frontend_url and frontend_url.startswith("http://") and "localhost" not in frontend_url:
+    origins.append(frontend_url.replace("http://", "https://"))
+
+# If frontend_url is HTTPS, also try HTTP for debugging
+if frontend_url and frontend_url.startswith("https://"):
+    # For production HTTPS URLs, also add the plain domain
+    origins.append(frontend_url)
+
+# Remove duplicates while preserving order
+origins = list(dict.fromkeys(origins))
 
 app.add_middleware(
     CORSMiddleware,
