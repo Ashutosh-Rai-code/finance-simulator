@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finance_simulator_backend"
+version = "0.1.0"
+description = "AI financial coach backend for the finance simulator"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn==0.24.0",
+    "pydantic==2.5.0",
+    "python-dotenv==1.0.0",
+    "google-generativeai==0.3.0",
+    "python-multipart==0.0.6",
+    "httpx==0.25.2",
+]
+
+[tool.setuptools.packages.find]
+include = ["models", "routes", "services"]

@@ -49,8 +49,9 @@ git push -u origin main
    - Click "New +" → "Web Service"
    - Connect your GitHub repo
    - Select `finance-simulator` repo
-   - Set Build Command: `pip install -r backend/requirements.txt`
-   - Set Start Command: `cd backend && python -m uvicorn main:app --host 0.0.0.0 --port 8000`
+   - Set the service's Root Directory to `backend` if Render supports monorepo roots.
+   - Set Build Command: `pip install -r requirements.txt`
+   - Set Start Command: `python -m uvicorn main:app --host 0.0.0.0 --port 8000`
    - Add Environment Variables:
      ```
      GEMINI_API_KEY=your_gemini_api_key_here
@@ -58,6 +59,9 @@ git push -u origin main
      FRONTEND_URL=https://your-frontend-url.vercel.app
      ```
    - Deploy
+
+   > If Render fails with a `Preparing metadata (pyproject.toml)` error, switch this service to Docker deployment instead of the Python buildpack or ensure Render is targeting the `backend` folder. The repo now includes `backend/pyproject.toml` for Python package metadata.
+   > For Docker on Render, set `Dockerfile location` to `backend/Dockerfile` and leave Build Command blank.
 
 3. **Get your backend URL**
    - After deployment, you'll get: `https://your-backend-name.onrender.com`

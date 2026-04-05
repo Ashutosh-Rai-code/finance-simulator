@@ -18,6 +18,18 @@ frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
+# Other project files
+.streamlit/
+app.py
+app_first.py
+app_second.py
+app_third.py
+app_fourth.py
+app_fifth.py
+app_sixth.py
+report.pdf
+Untitled.ipynb
+
 # IDE
 .vscode/
 .idea/
