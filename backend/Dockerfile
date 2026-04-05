@@ -2,18 +2,21 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies including Rust for pydantic-core
+# Set CARGO_HOME to a writable directory before installing Rust
+ENV CARGO_HOME=/tmp/cargo
+RUN mkdir -p /tmp/cargo
+
+# Install system dependencies and Rust
 RUN apt-get update && apt-get install -y \
     gcc \
     build-essential \
-    rustc \
-    cargo \
+    curl \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Set CARGO_HOME to a writable directory
-ENV CARGO_HOME=/tmp/cargo
-RUN mkdir -p /tmp/cargo && chmod 777 /tmp/cargo
+# Add Rust to PATH
+ENV PATH="/tmp/cargo/bin:${PATH}"
 
 # Copy requirements
 COPY requirements.txt .
