@@ -1,13 +1,12 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
     container_name: ai-financial-coach-backend
     ports:
       - "8000:8000"
+    env_file:
+      - ./backend/.env
     environment:
-      - GEMINI_API_KEY=AIzaSyDBL8t6CunfLcLlXk87E64FUTJd3TYiXcE
       - GEMINI_MODEL=gemini-3-flash-preview
       - FRONTEND_URL=http://localhost:3000
     volumes:

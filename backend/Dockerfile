@@ -2,6 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Copy requirements first for better caching
+COPY requirements.txt .
+
 # Set CARGO_HOME to a writable directory and install everything in one layer
 ENV CARGO_HOME=/tmp/cargo
 RUN mkdir -p /tmp/cargo && \
@@ -9,9 +12,9 @@ RUN mkdir -p /tmp/cargo && \
     apt-get install -y gcc build-essential curl && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     export PATH="$CARGO_HOME/bin:$PATH" && \
+    pip install --no-cache-dir -r requirements.txt && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip install --no-cache-dir -r requirements.txt
+    rm -rf /var/lib/apt/lists/*
 
 # Copy app
 COPY . .

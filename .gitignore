@@ -19,6 +19,11 @@ frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
+# Environment files
+.env
+.env.local
+.env.*.local
+
 # Other project files
 .streamlit/
 app.py
@@ -29,7 +34,7 @@ app_fourth.py
 app_fifth.py
 app_sixth.py
 report.pdf
-Untitled.ipynb
+Untitled-1.ipynb
 
 # IDE
 .vscode/
