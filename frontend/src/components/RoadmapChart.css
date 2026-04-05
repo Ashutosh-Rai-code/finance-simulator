@@ -1,0 +1,136 @@
+.roadmap-chart {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.chart-container {
+  margin-bottom: 2rem;
+  width: 100%;
+  height: 300px;
+}
+
+.custom-tooltip {
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow);
+}
+
+.tooltip-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.tooltip-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0 0;
+}
+
+.roadmap-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.roadmap-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.roadmap-table thead {
+  background-color: var(--surface-light);
+}
+
+.roadmap-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.roadmap-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .roadmap-chart {
+    padding: 1rem;
+  }
+
+  .roadmap-table th,
+  .roadmap-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roadmap-table th,
+  .roadmap-table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .chart-container {
+    height: 200px;
+  }
+}
+
+.roadmap-table tr:last-child td {
+  border-bottom: none;
+}
+
+.roadmap-table tr.highlight {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.roadmap-table tr.highlight td {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.year-cell {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.value-cell {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.status-cell {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .roadmap-chart {
+    padding: 1rem;
+  }
+
+  .chart-container {
+    margin-bottom: 1rem;
+  }
+
+  .roadmap-table th,
+  .roadmap-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}

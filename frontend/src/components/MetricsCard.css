@@ -1,0 +1,161 @@
+.metrics-card {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.metrics-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.metrics-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+}
+
+.metrics-card:hover::before {
+  transform: scaleX(1);
+}
+
+.metrics-card.trend-up {
+  border-left: 4px solid var(--success);
+}
+
+.metrics-card.trend-down {
+  border-left: 4px solid var(--danger);
+}
+
+.metrics-card.trend-neutral {
+  border-left: 4px solid var(--warning);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .metrics-card {
+    padding: 1rem;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-card {
+    padding: 0.875rem;
+  }
+
+  .card-value {
+    font-size: 1.25rem;
+  }
+
+  .card-icon {
+    font-size: 1.25rem;
+  }
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0 0;
+}
+
+.trend-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.trend-indicator.trend-up {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+
+.trend-up::before {
+  content: '↑';
+}
+
+.trend-indicator.trend-down {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+}
+
+.trend-down::before {
+  content: '↓';
+}
+
+.trend-indicator.trend-neutral {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+}
+
+.trend-neutral::before {
+  content: '→';
+}
+
+@media (max-width: 768px) {
+  .metrics-card {
+    padding: 1rem;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+  }
+}
